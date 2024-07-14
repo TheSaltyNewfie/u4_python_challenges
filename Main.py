@@ -6,19 +6,22 @@
 # - First, lets create a function that converts Minutes to Seconds (1 ->60, 5 -> 300)
 # -  Then take it up a step further, converting Hours into seconds (1 -> 3600)
 # -  We're on the right track here, how many seconds are in a day
-# - How many Hours are in the month of June? 
+# - How many Hours are in the month of June?
 # - How many Minutes are in the month of August?
- 
- 
- # Bonus -> Without singing the old showtune in your head, how many Minutes are there in a year? 
- # In days, in weeks, in cups of coffee?
+
+# Bonus -> Without singing the old showtune in your head, how many Minutes are there in a year?
+# In days, in weeks, in cups of coffee?
 
 
 # ---------------------------------
 #      Solution Goes Here ->
 # ---------------------------------
 
+def minutes_to_seconds(minutes):
+    return minutes*60
 
+
+print(minutes_to_seconds(1))
 
 #  2) Middle letter
 
@@ -30,6 +33,14 @@
 #      Solution Goes Here ->
 # ---------------------------------
 
+def extract_middle_letter(input: str):
+    if len(input) % 2 == 0:
+        return ""
+    return input[len(input) // 2]
+
+print(extract_middle_letter("abc"))
+print(extract_middle_letter("aaaa"))
+
 
 # ### 3) Hide the credit card number
 # Write a function in Python that accepts a credit card number. It should return a string where all the characters are hidden with an asterisk except the last four. For example, if the function gets sent "1234567894444", then it should return "*********4444".
@@ -39,7 +50,10 @@
 #      Solution Goes Here ->
 # ---------------------------------
 
+def hide_credit_card_number(card_number: str):
+    return "*" * (len(card_number) - 4) + card_number[-4:]
 
+print(hide_credit_card_number("1234567894444"))
 
 # ### 4) Online status
 # The aim of this challenge is, given a dictionary of people's online status, to count the number of people who are online.
@@ -65,7 +79,17 @@
 #      Solution Goes Here ->
 # ---------------------------------
 
+def check_online_status(statuses: dict):
+    return sum(1 for status in statuses.values() if status == "online")
 
+statuses = {
+    "John": "online",
+    "Paul": "offline",
+    "George": "online",
+    "Ringo": "offline"
+}
+
+print(check_online_status(statuses))
 
 #  5) Give me the discount
 # Create a function in Python that accepts two parameters. The first should be the full price of an item as an integer. The second should be the discount percentage as an integer.
@@ -75,6 +99,10 @@
 #      Solution Goes Here ->
 # ---------------------------------
 
+def apply_discount(price: int, discount: int):
+    return price - (price * discount / 100)
+
+print(apply_discount(100, 20))
 
 #  6) Pythagorean Theorum
 
@@ -86,8 +114,12 @@
 #      Solution Goes Here ->
 # ---------------------------------
 
+def pythagorean_theorem(a: int, b: int):
+    return (a**2 + b**2)**0.5
 
-#  7) Fibonacci Sequence 
+print(pythagorean_theorem(3, 4))
+
+#  7) Fibonacci Sequence
 # Everyone's favorite Math Problem!
 
 # The Fibonacci numbers are the numbers in the following integer sequence.
@@ -98,3 +130,11 @@
 # ---------------------------------
 #      Solution Goes Here ->
 # ---------------------------------
+
+def fibonacci_sequence(n: int):
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        fib_sequence.append(fib_sequence[i-1] + fib_sequence[i-2])
+    return fib_sequence
+
+print(fibonacci_sequence(13))
